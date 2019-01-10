@@ -1,0 +1,204 @@
+/**************************************
+ * Variables
+ **************************************/
+
+:root {
+  --orange: #FB8A03;
+  --magenta: #DA1A61;
+  --red: #F44335;
+  --purple: #9126A3;
+  --blue: #25A9F4;
+  --green: #4CAF50;
+  --grass: #8BC349;
+  --white: #FFFFFF;
+  --black: #100E17;
+
+  --opacity: rgba(0, 0, 0, 0.1);
+
+  --max-width: 1200px;
+  --width: 80%;
+  --full-width: 100%
+
+  --main-font: 'Noto Sans', sans-serif;
+}
+
+/**************************************
+ * Global
+ **************************************/
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #fafbfc;
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/**************************************
+ * Containers
+ **************************************/
+
+.site-container {
+  margin: auto;
+  max-width: var(--max-width);
+  width: var(--width);
+}
+
+.response-container {
+  margin-top: 2em;
+}
+
+/**************************************
+ * Masthead
+ **************************************/
+
+.masthead {
+  background: var(--blue);
+  padding: 2em 0;
+}
+
+.masthead h1 {
+  color: var(--white);
+  font-weight: normal;
+  margin: 0 0 0.2em;
+  text-align: center;
+}
+
+/**************************************
+ * Search Form
+ **************************************/
+
+.search-form {
+  display: flex;
+  margin: 0 auto;
+  padding: 1em 0;
+  width: var(--width);
+}
+
+.search-keyword {
+  border: none;
+  border-radius: 4px;
+  flex-grow: 1;
+  margin-right: 1.5em;
+  padding: 1.25em 2em;
+}
+
+.submit-button {
+  background-color: var(--red);
+  border: none;
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  padding: 1em 4em;
+  text-transform: uppercase;
+}
+
+.submit-button:hover {
+  background-color: var(--orange);
+}
+
+/**************************************
+ * Image
+ **************************************/
+
+figure {
+  margin: 0 0 2em;
+  position: relative;
+  text-align: center;
+}
+
+figure img {
+  border: solid 1px var(--green);
+  box-shadow: 0 0 10px 0 var(--opacity);
+  width: var(--width);
+}
+
+figcaption {
+  bottom: 5px;
+  color: var(--white);
+  font-size: 14px;
+  padding: 0.8em 1.4em;
+  position: absolute;
+  text-align: center;
+  width: var(--full-width);
+}
+
+/**************************************
+ * Article
+ **************************************/
+
+ul {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  width: var(--width);
+}
+
+.article {
+  border: solid 1px var(--purple);
+  box-shadow: 0 0 10px 0 var(--opacity);
+  margin-bottom: 0.5em;
+  padding: 2em 1em 4.8em;
+}
+
+.article h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.article h2 a {
+  color: var(--magenta);
+  text-decoration: none;
+}
+
+.article h2 a:hover {
+  text-decoration: underline;
+}
+
+.article p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/**************************************
+ * Errors
+ **************************************/
+
+.error-no-image {
+  background: url('../assets/images/icon-no-image.png') no-repeat 50% top;
+  margin-bottom: 4em;
+  padding-top: 8em;
+  text-align: center;
+}
+
+.error-no-articles {
+  background: url('../assets/images/icon-no-articles.png') no-repeat 50% top;
+  margin-bottom: 4em;
+  padding-top: 8em;
+  text-align: center;
+}
+
+/**************************************
+ * Helpers
+ **************************************/
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; /* 1 */
+}
