@@ -17,9 +17,7 @@
 
   --max-width: 1200px;
   --width: 80%;
-  --full-width: 100%
-
-  --main-font: 'Noto Sans', sans-serif;
+  --full-width: 100%;
 }
 
 /**************************************
@@ -142,29 +140,29 @@ ul {
   width: var(--width);
 }
 
-.article {
+li {
   border: solid 1px var(--purple);
   box-shadow: 0 0 10px 0 var(--opacity);
   margin-bottom: 0.5em;
   padding: 2em 1em 4.8em;
 }
 
-.article h2 {
+li h2 {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 
-.article h2 a {
+li h2 a {
   color: var(--magenta);
   text-decoration: none;
 }
 
-.article h2 a:hover {
+li h2 a:hover {
   text-decoration: underline;
 }
 
-.article p {
+li p {
   font-size: 16px;
   line-height: 1.4;
 }
