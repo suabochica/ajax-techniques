@@ -1,9 +1,9 @@
 (function() {
+  let searchedForText
   const form = document.querySelector('#search-form')
   const searchField = document.querySelector('#search-keyword')
   const imageContainer = document.querySelector('.image-container')
   const articlesContainer = document.querySelector('.articles-container')
-  let searchedForText
 
   form.addEventListener('submit', function(event) {
     event.preventDefault()
@@ -26,30 +26,40 @@
   })
 
   function addImage() {
+    let htmlContent = ''
     const data = JSON.parse(this.responseText)
-    const firstImage = data.results[0]
 
-    imageContainer.insertAdjacentHTML(
-      'afterbegin',
-      `<figure>
-        <img src="${firstImage.urls.full}" alt="${searchedForText}">
-        <figcaption>${searchedForText} by ${firstImage.user.username}</figcaption>
-      </figure>`
-    )
+    if (data && data.results && data.results[0]) {
+      const firstImage = data.results[0]
+
+      htmlContent = `<figure>
+          <img src="${firstImage.urls.full}" alt="${searchedForText}">
+          <figcaption>${searchedForText} by ${firstImage.user.username}</figcaption>
+        </figure>`
+    } else {
+      htmlContent = '<div class="error-no-image">No images available</div>'
+    }
+
+    imageContainer.insertAdjacentHTML('afterbegin', htmlContent)
   }
 
   function addArticles() {
+    let htmlContent = ''
     const data = JSON.parse(this.responseText)
-    const articles = data.response.docs.map(article =>
-      `<li>
-        <h2><a href="${article.web_url}>${article.headline.main}</a></h2>
-        <p>${article.snippet}</p>
-      </li>`
-    )
 
-    articlesContainer.insertAdjacentHTML(
-      'afterbegin',
-      `<ul>${articles.join('')}</ul>`
-    )
+    if (data.response && data.response.docs && data.response.docs.length > 1) {
+      htmlContent = '<ul>' +
+        data.response.docs.map(article =>
+            `<li>
+              <h2><a href="${article.web_url}>${article.headline.main}</a></h2>
+              <p>${article.snippet}</p>
+            </li> `
+          ).join('')
+        + '</ul>'
+    } else {
+      htmlContent = '<div class="error-no-articles">No articles available</div>'
+    }
+
+    articlesContainer.insertAdjacentHTML('afterbegin', htmlContent)
   }
 })()
