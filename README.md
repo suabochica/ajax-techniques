@@ -16,4 +16,4 @@ The app will make asynchronous request using three different methods:
 + The Fetch API
     + **Bonus**: The Fetch API with `async/await`
 
-This project is based in the [Udacity's Ajax Course](https://github.com/udacity/course-ajax/blob/solution).
+This project is based in the [Udacity's Ajax Course](https://github.com/udacity/course-ajax/).
