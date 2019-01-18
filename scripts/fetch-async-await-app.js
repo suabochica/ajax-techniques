@@ -11,19 +11,30 @@
     articlesContainer.innerHTML = ''
     searchedForText = searchField.value
 
-    $.ajax({
-      url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`,
-      headers: {
-        Authorization: 'Client-ID 462d22cae6dd1d4877bb082c9e9c6502893a9bb7305d4bf8f681d13b56d4abc3'
-      }
-    })
-    .done(addImage)
-
-    $.ajax({
-      url: `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`,
-    })
-    .done(addArticles)
+    getImage(searchedForText).then(addImage)
+    getArticles(searchedForText).then(addArticles)
   })
+
+  async function getImage(searchedForText) {
+    const result = await fetch(
+      `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`,
+      {
+        headers: {
+          Authorization: 'Client-ID 462d22cae6dd1d4877bb082c9e9c6502893a9bb7305d4bf8f681d13b56d4abc3'
+        }
+      }
+    )
+    const data = await result.json();
+
+    return data;
+  }
+
+  async function getArticles(searchedForText) {
+    const result = await fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`)
+    const data = await result.json();
+
+    return data;
+  }
 
   function addImage(data) {
     let htmlContent = ''
