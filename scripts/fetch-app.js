@@ -6,6 +6,8 @@
   const articlesContainer = document.querySelector('.articles-container')
 
   form.addEventListener('submit', function(event) {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+
     event.preventDefault()
     imageContainer.innerHTML = ''
     articlesContainer.innerHTML = ''
@@ -22,7 +24,7 @@
     .then(response => response.json())
     .then(addImage)
 
-    fetch(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`)
+    fetch(`${proxyUrl}http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`)
     .then(response => response.json())
     .then(addArticles)
   })
